@@ -3,14 +3,13 @@ var Schema = mongoose.Schema;
 var Topic = mongoose.model('Topic', topicSchema);
 
 var NewsSchema = new Schema({
-  _id: Schema.Types.ObjectId,
   title: {
     type: String,
-    required: 'filled the title'
+    required: true
   },
   content: {
     type: String,
-    required: 'filled the content'
+    required: true
   },
   author: type: String,
   Created_date: {

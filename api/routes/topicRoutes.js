@@ -1,5 +1,5 @@
 module.exports = function(app) {
-  var topic = require('../controllers/topicController');
+  var topic = require('../controller/topicController');
 
 
   // topic Routes

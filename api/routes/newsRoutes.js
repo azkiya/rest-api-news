@@ -1,5 +1,5 @@
 module.exports = function(app) {
-  var news = require('../controller/newsController');
+  const news = require('../controller/newsController');
 
   // news Routes
   app.route('/news')

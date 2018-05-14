@@ -1,7 +1,9 @@
-var mongoose = require('mongoose');
-var Schema = mongoose.Schema;
-var Topic = require('./topicModel.js')
-var NewsSchema = new Schema({
+const mongoose = require('mongoose');
+const Topic = require('./topicModel.js');
+
+const Schema = mongoose.Schema;
+
+const NewsSchema = new Schema({
   title: {
     type: String,
     required: true

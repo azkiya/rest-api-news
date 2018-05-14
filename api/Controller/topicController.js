@@ -1,52 +1,53 @@
-var mongoose = require('mongoose'),
-  Topic = mongoose.model('Topic');
+const mongoose = require('mongoose');
 
-exports.list = function(req, res) {
-  Topic.find({}, function(err, topic) {
-    if (err)
-      res.send(err);
-    res.json(topic);
-  });
+Topic = mongoose.model('Topic');
+
+exports.list = () => async(req, res) => {
+  try{
+    const topicData = await Topic.find();
+    return res.json(topicData);
+  } catch(err){
+    return res.send(err);
+  }
 };
 
+exports.create = () => async(req, res) => {
+  try{
+    const createTopic = await new Topic(req.body);
+    createTopic.save(() => {
+      res.json(createTopic);
+    });
 
-
-
-exports.create = function(req, res) {
-  var createTopic = new Topic(req.body);
-  createTopic.save(function(err, topic) {
-    if (err)
-      res.send(err);
-    res.json(topic);
-  });
+  } catch(err){
+    return res.send(err);
+  }
 };
 
-
-exports.show = function(req, res) {
-  Topic.findById(req.params.topicId, function(err, topic) {
-    if (err)
-      res.send(err);
-    res.json(topic);
-  });
+exports.show = () => async(req, res) => {
+  try{
+    const topicData = await Topic.findById(req.params.topicId);
+    return res.json(topicData);
+  } catch(err){
+    return res.send(err);
+  }
 };
 
-
-exports.update = function(req, res) {
-  Topic.findOneAndUpdate({_id: req.params.topicId}, req.body, {new: true}, function(err, topic) {
-    if (err)
-      res.send(err);
-    res.json(topic);
-  });
+exports.update = () => async(req, res) => {
+  try{
+    const topicData = await Topic.findOneAndUpdate({_id: req.params.topicId}, req.body, {new: true});
+    return res.json(topicData);
+  } catch(err) {
+    return res.send(err)
+  }
 };
 
+exports.removeById = () => async(req, res) => {
+  try{
+    const topicData = await Topic.remove({ _id: req.params.topicId });
 
-exports.removeById = function(req, res) {
-  Topic.remove({
-    _id: req.params.topicId
-  }, function(err, topic) {
-    if (err)
-      res.send(err);
-    res.json({ message: 'Topic successfully deleted' });
-  });
+    return res.json({ message: 'Topic successfully deleted' });
+  } catch(err){
+    return res.send(err);
+  }
 };
 

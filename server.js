@@ -2,7 +2,8 @@ var express = require('express'),
   app = express(),
   port = process.env.PORT || 3000,
   mongoose = require('mongoose'),
-  Topic = require ('./api/models/topicModel'),
+  Topic = require('./api/models/topicModel'),
+  News = require('./api/models/newsModel'),
   bodyParser = require('body-parser');
 
   mongoose.Promise = global.Promise;
@@ -11,8 +12,12 @@ var express = require('express'),
   app.use(bodyParser.urlencoded({ extended:true }));
   app.use(bodyParser.json());
 
-  var routes = require('./api/routes/topicRoutes');
-  routes(app);
+  var topic = require('./api/routes/topicRoutes');
+  var news = require('./api/routes/newsRoutes');
+
+  topic(app);
+  news(app);
+
 
 
 app.listen(port);

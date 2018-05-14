@@ -1,7 +1,6 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
-var Topic = mongoose.model('Topic', topicSchema);
-
+var Topic = require('./topicModel.js')
 var NewsSchema = new Schema({
   title: {
     type: String,
@@ -11,7 +10,7 @@ var NewsSchema = new Schema({
     type: String,
     required: true
   },
-  author: type: String,
+  author: String,
   Created_date: {
     type: Date,
     default: Date.now

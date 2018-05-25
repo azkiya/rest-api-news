@@ -1,4 +1,5 @@
-const mongoose = require('mongoose');
+import mongoose from 'mongoose';
+
 const Topic = require('./topicModel.js');
 
 const Schema = mongoose.Schema;

@@ -1,5 +1,7 @@
-const mongoose = require('mongoose'),
-  News = mongoose.model('News');
+// const mongoose = require('mongoose'),
+import mongoose from 'mongoose';
+
+const News = mongoose.model('News');
 
 exports.list =  () => async(req, res) => {
   try{

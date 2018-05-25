@@ -1,6 +1,6 @@
-const mongoose = require('mongoose');
+import mongoose from 'mongoose';
 
-Topic = mongoose.model('Topic');
+const Topic = mongoose.model('Topic');
 
 exports.list = () => async(req, res) => {
   try{

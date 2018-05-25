@@ -7,7 +7,10 @@ var express = require('express'),
   bodyParser = require('body-parser');
 
   mongoose.Promise = global.Promise;
-  mongoose.connect('mongodb://localhost/kumparan');
+  mongoose.connect('mongodb://fany:irfana@ds235860.mlab.com:35860/api-fany');
+  mongoose.connection.once('open', () => {
+    console.log('connected to database')
+  });
 
   app.use(bodyParser.urlencoded({ extended:true }));
   app.use(bodyParser.json());

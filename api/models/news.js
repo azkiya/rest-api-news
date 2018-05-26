@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
+import Topic from './topic';
 
-const Topic = require('./topicModel.js');
 
 const Schema = mongoose.Schema;
 

@@ -1,5 +1,5 @@
 module.exports = function(app) {
-  const topic = require('../controller/topicController');
+  const topic = require('../controller/topic');
 
 
   // topic Routes

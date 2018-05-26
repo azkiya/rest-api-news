@@ -20,8 +20,6 @@ $ npm install
 $ npm run start
 ```
 
-make sure mongodb started
-
 ### End Point
 
 list of end point

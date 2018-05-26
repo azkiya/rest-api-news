@@ -1,13 +1,20 @@
-var express = require('express'),
-  app = express(),
-  port = process.env.PORT || 3000,
-  mongoose = require('mongoose'),
-  Topic = require('./api/models/topicModel'),
-  News = require('./api/models/newsModel'),
-  bodyParser = require('body-parser');
+import express from 'express';
+import mongoose from 'mongoose';
+import bodyParser from 'body-parser';
+import jwt from 'jsonwebtoken';
+
+import config from './config';
+import Topic from './api/models/topic';
+import News from './api/models/news';
+import User from './api/models/user';
+
+
+  const app = express();
+  const port = process.env.PORT || 3000;
+  app.set('secretKey', config.secretKey);
 
   mongoose.Promise = global.Promise;
-  mongoose.connect('mongodb://fany:irfana@ds235860.mlab.com:35860/api-fany');
+  mongoose.connect('mongodb://admin:test@ds235860.mlab.com:35860/api-fany');
   mongoose.connection.once('open', () => {
     console.log('connected to database')
   });
@@ -15,11 +22,15 @@ var express = require('express'),
   app.use(bodyParser.urlencoded({ extended:true }));
   app.use(bodyParser.json());
 
-  var topic = require('./api/routes/topicRoutes');
-  var news = require('./api/routes/newsRoutes');
+  const topic = require('./api/routes/topic');
+  const news = require('./api/routes/news');
+  const user = require('./api/routes/user');
+
 
   topic(app);
   news(app);
+  user(app);
+
 
 
 

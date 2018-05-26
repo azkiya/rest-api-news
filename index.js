@@ -2,6 +2,7 @@ import express from 'express';
 import mongoose from 'mongoose';
 import bodyParser from 'body-parser';
 import jwt from 'jsonwebtoken';
+import morgan from 'morgan';
 
 import config from './config';
 import Topic from './api/models/topic';
@@ -21,6 +22,10 @@ import User from './api/models/user';
 
   app.use(bodyParser.urlencoded({ extended:true }));
   app.use(bodyParser.json());
+
+  // use morgan to log requests to the console
+  app.use(morgan('dev'));
+
 
   const topic = require('./api/routes/topic');
   const news = require('./api/routes/news');

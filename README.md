@@ -8,6 +8,9 @@ this task uses a number of open source projects to work properly:
 * [node.js] - evented I/O for the backend
 * [Express] - fast node.js network app framework [@tjholowaychuk]
 * [MongoDB] - NoSQL database program
+* [mLab]	- mLab is the leading Database-as-a-Service for MongoDB
+
+use mLab so no need to install mongoDB, so that it automatically connect with my database
 
 ### Installation
 
@@ -38,3 +41,5 @@ list of end point
 | single news | GET | [http://localhost:3000/news/:newsId] |
 | update news | PUT | [http://localhost:3000/news/:newsId] |
 | remove news | DELETE | [http://localhost:3000/news/:newsId] |
+| create user | POST | [http://localhost:3000/register] |
+| login user | POST | [http://localhost:3000/login] |

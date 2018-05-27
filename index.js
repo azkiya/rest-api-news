@@ -11,7 +11,7 @@ import User from './api/models/user';
 
 
   const app = express();
-  const port = process.env.PORT || 3000;
+  const port = process.env.PORT || 3001;
   app.set('secretKey', config.secretKey);
 
   mongoose.Promise = global.Promise;

@@ -24,22 +24,22 @@ $ npm run start
 ```
 
 ### End Point
-
+* deploy at now.sh 
 list of end point
 
 | task | method|end point |
 | ------ | ------ | ------ |
-| list topics  | GET | [http://localhost:3000/topics] |
-| create topic | POST | [http://localhost:3000/topics] |
-| single topic | GET | [http://localhost:3000/topics/:topicId] |
-| update topic | PUT | [http://localhost:3000/topics/:topicId] |
-| remove topic | DELETE | [http://localhost:3000/topics/:topicId] |
-| list news  | GET | [http://localhost:3000/news] |
-| find news by topics  | GET | [http://localhost:3000/news/topic/:topicId] |
-| find news by status  | GET | [http://localhost:3000/news/status/:statusNews] |
-| create news | POST | [http://localhost:3000/news] |
-| single news | GET | [http://localhost:3000/news/:newsId] |
-| update news | PUT | [http://localhost:3000/news/:newsId] |
-| remove news | DELETE | [http://localhost:3000/news/:newsId] |
-| create user | POST | [http://localhost:3000/register] |
-| login user | POST | [http://localhost:3000/login] |
+| list topics  | GET | [https://rest-api-dqlwalnead.now.sh/topics] |
+| create topic | POST | [https://rest-api-dqlwalnead.now.sh/topics] |
+| single topic | GET | [https://rest-api-dqlwalnead.now.sh/topics/:topicId] |
+| update topic | PUT | [https://rest-api-dqlwalnead.now.sh/topics/:topicId] |
+| remove topic | DELETE | [https://rest-api-dqlwalnead.now.sh/topics/:topicId] |
+| list news  | GET | [https://rest-api-dqlwalnead.now.sh/news] |
+| find news by topics  | GET | [https://rest-api-dqlwalnead.now.sh/news/topic/:topicId] |
+| find news by status  | GET | [https://rest-api-dqlwalnead.now.sh/news/status/:statusNews] |
+| create news | POST | [https://rest-api-dqlwalnead.now.sh/news] |
+| single news | GET | [https://rest-api-dqlwalnead.now.sh/news/:newsId] |
+| update news | PUT | [https://rest-api-dqlwalnead.now.sh/news/:newsId] |
+| remove news | DELETE | [https://rest-api-dqlwalnead.now.sh/news/:newsId] |
+| create user | POST | [https://rest-api-dqlwalnead.now.sh/register] |
+| login user | POST | [https://rest-api-dqlwalnead.now.sh/login] |

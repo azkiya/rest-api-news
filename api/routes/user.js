@@ -11,6 +11,6 @@ module.exports = function(app) {
     .post(user.authenticate());
 
   app.route('/logout')
-    .get(user.destroy());
+    .get(user.logout());
 
 };

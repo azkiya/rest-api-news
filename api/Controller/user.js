@@ -49,7 +49,7 @@ exports.authenticate = () => async(req, res) => {
   }
 }
 
-exports.destroy = () => async(req, res) => {
+exports.logout = () => async(req, res) => {
   try{
     if(req.session) {
       req.session.destroy(() => {

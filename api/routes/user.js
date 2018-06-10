@@ -10,4 +10,7 @@ module.exports = function(app) {
   app.route('/login')
     .post(user.authenticate());
 
+  app.route('/logout')
+    .get(user.destroy());
+
 };

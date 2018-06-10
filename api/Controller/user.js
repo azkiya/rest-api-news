@@ -21,16 +21,25 @@ exports.authenticate = () => async(req, res) => {
     const user = await new User(req.body); 
     const userData = await User.findOne({ email: req.body.email });
 
+    if(!userData){
+      res.json({
+        status: "error email address not found",
+        data: null
+      });
+    }
+
     if( bcrypt.compareSync(user.password, userData.password)) {
       const token = await jwt.sign({ id: userData._id}, req.app.get('secretKey'), { expiresIn: '1h'});
       
+      req.session.userId = user._id;
+
       res.json({
         status: "success",
         data:{ user: userData, token:token }
       });
     }else{
       res.json({
-        status: "error",
+        status: "error password not match",
         data: null
       });
     }
@@ -38,5 +47,21 @@ exports.authenticate = () => async(req, res) => {
   } catch(err){
     return res.send(err);
   }
-
 }
+
+exports.destroy = () => async(req, res) => {
+  try{
+    if(req.session) {
+      req.session.destroy(() => {
+        return res.json({
+          status: "success logout",
+        });
+      });
+    }
+
+  } catch(err){
+    return res.send(err);
+  }
+}
+
+

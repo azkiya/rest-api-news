@@ -3,6 +3,7 @@ import mongoose from 'mongoose';
 import bodyParser from 'body-parser';
 import jwt from 'jsonwebtoken';
 import morgan from 'morgan';
+import session from 'express-session';
 
 import config from './config';
 import Topic from './api/models/topic';
@@ -25,6 +26,13 @@ import User from './api/models/user';
 
   // use morgan to log requests to the console
   app.use(morgan('dev'));
+
+  //use sessions for tracking logins
+  app.use(session({
+    secret: 'work hard',
+    resave: true,
+    saveUninitialized: false
+  }));
 
 
   const topic = require('./api/routes/topic');

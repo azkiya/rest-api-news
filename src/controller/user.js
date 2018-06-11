@@ -31,8 +31,8 @@ exports.authenticate = () => async(req, res) => {
     if( bcrypt.compareSync(user.password, userData.password)) {
       const token = await jwt.sign({ id: userData._id}, req.app.get('secretKey'), { expiresIn: '1h'});
       
-      req.session.userId = user._id;
-       req.session.token = token;
+      req.session.userId = userData._id;
+      req.session.token = token;
 
       res.json({
         status: "success",

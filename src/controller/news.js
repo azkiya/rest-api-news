@@ -1,13 +1,13 @@
 import mongoose from 'mongoose';
 
 const News = mongoose.model('News');
+const User = mongoose.model('User');
+
 
 exports.list =  () => async(req, res) => {
   try{
 
-    const newsData = await News.find({})
-    .populate({ path: 'topic' })
-    .exec();
+    const newsData = await News.find({}).exec();
 
     return res.json(newsData);
 
@@ -41,12 +41,14 @@ exports.findByStatus = () => async(req, res) => {
 };
 
 exports.create = () => async(req, res) => {
+  const author = await User.findById(req.session.userId);
   const topics = await req.body.topics;
   const createNews = await new News(req.body);
 
   topics.forEach((topic) => {
     createNews.topic.push(topic);
   });
+  createNews.author.push(author);
   try{
     createNews.save(() => {
       res.json(createNews)

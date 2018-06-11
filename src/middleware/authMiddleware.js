@@ -1,5 +1,7 @@
-import { TOKEN_HEADER } from '../../config';
-import { AuthenticationError, AuthorizationError } from './http';
+import * as Constants from '../config/constants';
+import config from '../config';
+import { AuthenticationError, AuthorizationError } from '../lib/error';
+import mongoose from 'mongoose';
 
 const User = mongoose.model('User');
 
@@ -11,10 +13,11 @@ const User = mongoose.model('User');
  * @param next
  */
 export const protect = async (req, res, next) => {
-  const token = req.header(config.get(TOKEN_HEADER));
+  console.log(config.get(Constants.TOKEN_HEADER));
+  const token = req.header(config.get(Constants.TOKEN_HEADER));
 
   if (!token) {
-    next(new AuthenticationError(`Header ${config.get(TOKEN_HEADER)} should be present`));
+    next(new AuthenticationError(`Header ${config.get(Constants.TOKEN_HEADER)} should be present`));
   }
 
   let person;

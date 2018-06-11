@@ -2,13 +2,14 @@ import express from 'express';
 import mongoose from 'mongoose';
 import bodyParser from 'body-parser';
 import jwt from 'jsonwebtoken';
-import morgan from 'morgan';
+import logger from 'morgan';
 import session from 'express-session';
 
-import { CONFIG_SECRET } from './config';
-import Topic from './api/models/topic';
-import News from './api/models/news';
-import User from './api/models/user';
+import config from './src/config';
+import { CONFIG_SECRET } from './src/config/constants';
+import Topic from './src/models/topic';
+import News from './src/models/news';
+import User from './src/models/user';
 
 
   const app = express();
@@ -24,9 +25,10 @@ import User from './api/models/user';
   app.use(bodyParser.urlencoded({ extended:true }));
   app.use(bodyParser.json());
 
-  // use morgan to log requests to the console
-  app.use(morgan('dev'));
-
+// use morgan to log requests to the console
+if (config.get('debug')) {
+  app.use(logger('dev'));
+}
   //use sessions for tracking logins
   app.use(session({
     secret: 'work hard',
@@ -35,9 +37,9 @@ import User from './api/models/user';
   }));
 
 
-  const topic = require('./api/routes/topic');
-  const news = require('./api/routes/news');
-  const user = require('./api/routes/user');
+  const topic = require('./src/routes/topic');
+  const news = require('./src/routes/news');
+  const user = require('./src/routes/user');
 
 
   topic(app);

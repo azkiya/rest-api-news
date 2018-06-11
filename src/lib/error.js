@@ -1,6 +1,6 @@
 import status from 'http-status';
 import ExtendableError from 'es6-error';
-import config from '../../config';
+import config from '../config';
 
 
 /**

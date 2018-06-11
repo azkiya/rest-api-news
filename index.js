@@ -5,7 +5,7 @@ import jwt from 'jsonwebtoken';
 import morgan from 'morgan';
 import session from 'express-session';
 
-import config from './config';
+import { CONFIG_SECRET } from './config';
 import Topic from './api/models/topic';
 import News from './api/models/news';
 import User from './api/models/user';
@@ -13,7 +13,7 @@ import User from './api/models/user';
 
   const app = express();
   const port = process.env.PORT || 3001;
-  app.set('secretKey', config.secretKey);
+  app.set('secretKey', CONFIG_SECRET);
 
   mongoose.Promise = global.Promise;
   mongoose.connect('mongodb://admin:test@ds235860.mlab.com:35860/api-fany');

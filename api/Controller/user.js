@@ -32,6 +32,7 @@ exports.authenticate = () => async(req, res) => {
       const token = await jwt.sign({ id: userData._id}, req.app.get('secretKey'), { expiresIn: '1h'});
       
       req.session.userId = user._id;
+       req.session.token = token;
 
       res.json({
         status: "success",

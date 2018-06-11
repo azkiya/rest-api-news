@@ -1,5 +1,5 @@
-import { TOKEN_HEADER } from './config';
-import { AuthenticationError, AuthorizationError } from '../lib/error';
+import { TOKEN_HEADER } from '../../config';
+import { AuthenticationError, AuthorizationError } from './http';
 
 const User = mongoose.model('User');
 
@@ -22,7 +22,7 @@ export const protect = async (req, res, next) => {
     if(req.session.token == token){
 
       return await await User.findOne({ _id: req.session.userId }).exec();
-      
+
     }
   } catch (err) {
     next(new AuthenticationError('Invalid token', err));

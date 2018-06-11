@@ -1,11 +1,12 @@
-module.exports = function(app) {
-  const topic = require('../controller/topic');
+import { protect } from '../middleware/authMiddleware';
+import topic from '../controller/topic';
 
+module.exports = function(app) {
 
   // topic Routes
   app.route('/topics')
     .get(topic.list())
-    .post(topic.create());
+    .post(protect, topic.create());
 
 
   app.route('/topics/:topicId')

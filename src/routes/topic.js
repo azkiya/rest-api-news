@@ -11,6 +11,6 @@ module.exports = function(app) {
 
   app.route('/topics/:topicId')
     .get(topic.show())
-    .put(topic.update())
-    .delete(topic.removeById());
+    .put(protect, topic.update())
+    .delete(protect, topic.removeById());
 };

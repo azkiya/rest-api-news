@@ -4,6 +4,7 @@ import bodyParser from 'body-parser';
 import jwt from 'jsonwebtoken';
 import logger from 'morgan';
 import session from 'express-session';
+import dotenv from 'dotenv';
 
 import config from './src/config';
 import { CONFIG_SECRET } from './src/config/constants';
@@ -13,11 +14,12 @@ import User from './src/models/user';
 
 
   const app = express();
+  dotenv.config();
   const port = process.env.PORT || 3001;
   app.set('secretKey', CONFIG_SECRET);
 
   mongoose.Promise = global.Promise;
-  mongoose.connect('mongodb://admin:test@ds235860.mlab.com:35860/api-fany');
+  mongoose.connect(process.env.DB);
   mongoose.connection.once('open', () => {
     console.log('connected to database')
   });

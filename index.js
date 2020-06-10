@@ -19,7 +19,7 @@ import User from './src/models/user';
   app.set('secretKey', CONFIG_SECRET);
 
   mongoose.Promise = global.Promise;
-  mongoose.connect(process.env.DB);
+  mongoose.connect(process.env.DB_DROPLET, {useUnifiedTopology: true});
   mongoose.connection.once('open', () => {
     console.log('connected to database')
   });

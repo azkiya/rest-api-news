@@ -11,7 +11,7 @@
   "license": "ISC",
   "dependencies": {
     "bcrypt": "^2.0.1",
-    "convict": "^4.3.0",
+    "convict": "^6.2.2",
     "dotenv": "^8.2.0",
     "es6-error": "^4.1.1",
     "express": "^4.16.3",
